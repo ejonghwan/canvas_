@@ -146,16 +146,18 @@
                                
                             <style>
                                 .date_wrap { display: flex; }
-                                .date_item { border: 1px solid #a8a8a8; flex: 1 1 auto; }
+                                .date_item { position: relative; border: 1px solid #a8a8a8; flex: 1 1 auto; cursor: pointer;} 
                                 .date_item .month-value,
                                 .date_item .day-value,
                                 .date_item .hour-value,
-                                .date_item .minute-value { display: none; }
+                                .date_item .minute-value { position: absolute; top: 30px; left: 0; transition: .2s ease-in-out; height: 0px; overflow: hidden; overflow-y: scroll; background-color: #fff;}
 
                                 .date_item .month-value.active,
                                 .date_item .day-value.active,
-                                .date_item .hour-value.active,
-                                .date_item .minute-value.active { display: block; }
+                                .date_item .hour-value.active { height: 150px; }
+                                .date_item .minute-value.active { height: 60px; }
+
+                                .date_item .date.day.none { pointer-events: none; color: rgba(0, 0, 0, .3);  }
                             </style>
                             <div class="date_wrap">
                                 <!-- 월 -->
@@ -180,7 +182,7 @@
 
                                 <!-- 일 -->
                                 <div class="date_item">
-                                    <div class="date day">일</div>
+                                    <div class="date day none">일</div>
                                     <ul class="day-value"></ul>
                                 </div>
                                 <!-- //일 -->
@@ -359,6 +361,9 @@
 
                     // 인풋 밸류를 스탭2에 있는 인풋에 넣음. 왜 ? 
                     // 캔버스 함수 실행 후 스탭 2 캔버스 랩에 어펜드 후 
+                    for(const obj in resultDate) {
+                        if(resultDate[obj].length === 0) return alert('날짜를 모두 입력해주세요.');
+                    }
 					if(inputTextVal && inputTextVal2 && inputTextVal3 && inputTextVal5) {
 						$('.wishcard_step.step-one').hide();
 						$('.wishcard_step.step-two').show();
@@ -409,7 +414,11 @@
 					$('.wishcard_next').hide();
 					$('.wishcard_save').hide();
 					$('.wishcard_item').find('.e_btn.focus').focus();
-
+                    dateUpdate({ month: '', day: '', hour: '', minute: '' })
+                    month_wrap.innerHTML = '월'
+                    day_wrap.innerHTML = '일'
+                    hour_wrap.innerHTML = '시'
+                    minute_wrap.innerHTML = '분'
                     // 여기에 일시도 초기화 해야함. 아직 작업전
 				});
 
@@ -473,7 +482,9 @@
 					var textInput1 = document.querySelector('#canvasText').value;
 					var textInput2 = document.querySelector('#canvasText2').value;
 					var textInput3 = document.querySelector('#canvasText3').value;
+					var textInput4 = document.querySelector('#canvasText4').value;
 					var textInput5 = document.querySelector('#canvasText5').value;
+
 
 					ctx.fillStyle = txtColor;
 					ctx.textBaseline = "bottom";
@@ -482,11 +493,13 @@
 					var width3 = '700';
 					var fontSize1 = '50px';
 					var fontSize2 = '29px';
+
                     // 글자수에 따라 줄바꿈 되어야 할 경우 아래 함수 사용. lines 반복문은 그대로 유지해둠
 					// var lines1 = fragmentText(ctx, textInput1, width1);
 					var lines1 = [textInput1]
 					var lines2 = [textInput2]
 					var lines3 = [textInput3]
+					var lines4 = [textInput4]
 					var lines5 = [textInput5]
 
                     // console.log('lines', lines)
@@ -525,6 +538,20 @@
 						}
 					});
 
+                    
+                    lines4.forEach(function(line, i) {
+                        ctx.font = "bold 34px SamsungOneKorean";
+                        ctx.letterSpacing = "-3px";
+                        ctx.textAlign = "center";
+
+                        console.log('lines4', lines4)
+
+						if(i > 0) {
+							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1152);
+						} else {
+							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1152);
+						}
+					});
                     
                     lines5.forEach(function(line, i) {
                         ctx.font = "normal 34px SamsungOneKorean";
@@ -644,111 +671,6 @@
 
     
     <script>
-
-
-        // const date = {
-        //     val: {
-        //         month_wrap: document.querySelector('.date.month'),
-        //         month_value: document.querySelector('.month-value'),
-        //         month_els: document.querySelectorAll('.month-value > li'),
-        //         day_wrap: document.querySelector('.date.day'),
-        //         day_value: document.querySelector('.day-value'),
-        //         hour_wrap: document.querySelector('.date.hour'),
-        //         hour_value: document.querySelector('.hour-value'),
-        //         hour_els: document.querySelectorAll('.hour-value > li'),
-        //         minute_wrap: document.querySelector('.date.minute'),
-        //         minute_value: document.querySelector('.minute-value'),
-        //         minute_els: document.querySelectorAll('.minute-value > li'),
-        //         resultDate: {
-        //             month: '',
-        //             day: '',
-        //             hour: '',
-        //             minute: '',
-        //         }
-        //     },
-        //     init() {
-        //         // 부모요소들 액티브 이벤트
-        //         this.val.month_wrap.addEventListener('click', this.month_active)
-        //         this.val.day_wrap.addEventListener('click', this.day_active)
-        //         this.val.hour_wrap.addEventListener('click', this.hour_active)
-        //         this.val.minute_wrap.addEventListener('click', this.minute_active)
-
-        //         // 자식요소들 액티브 이벤트
-        //         for(let i = 0; i < this.val.month_els.length; i++) {
-        //             this.val.month_els[i].addEventListener('click', () => {
-        //                 this.val.month_wrap.innerHTML = `${i + 1}월` 
-        //                 this.val.month_value.classList.remove('active')
-        //                 this.day_update(i);
-        //                 this.dateUpdate({ month: i + 1 })
-        //             })
-        //         }
-        //         for(let i = 0; i < this.val.hour_els.length; i++) {
-        //             this.val.hour_els[i].addEventListener('click', () => {
-        //                 this.val.hour_wrap.innerHTML = `${this.val.hour_els[i].querySelector('button').dataset.date}시`;
-        //                 this.val.hour_value.classList.remove('active')
-        //                 this.dateUpdate({ hour: this.val.hour_els[i].querySelector('button').dataset.date})
-        //             })
-        //         }
-        //         for(let i = 0; i < this.val.minute_els.length; i++) {
-        //             this.val.minute_els[i].addEventListener('click', () => {
-        //                 this.val.minute_wrap.innerHTML = `${this.val.minute_els[i].querySelector('button').dataset.date}분`;
-        //                 this.val.minute_value.classList.remove('active')
-        //                 this.dateUpdate({ minute: this.val.minute_els[i].querySelector('button').dataset.date})
-        //             })
-        //         }
-        //     },
-            
-            
-        //     month_active() {
-        //         console.log(this.val)
-        //         this.val.month_value.classList.add('active')
-        //     },
-
-        //     day_active() {
-        //         this.val.day_value.classList.add('active')
-        //     },
-
-        //     day_update(idx) {
-        //         let dd = 31;
-        //         let lis = '';
-        //         if(idx === 2) dd = 29;
-        //         if(idx === 4 || idx === 6 || idx === 9 || idx === 11) dd = 30;
-        //         for(let i = 0; i < dd; i++) {
-        //             lis += `
-        //                 <li>
-        //                     <button type="button">${i + 1}일</button>
-        //                 </li>
-        //             `
-        //         }
-        //         this.val.day_value.innerHTML = lis;
-
-        //         // 동적으로 그려지는 day event
-        //         const day_els = document.querySelectorAll('.day-value > li');
-        //         for(let i = 0; i < this.val.day_els.length; i++) {
-        //             day_els[i].addEventListener('click', () => {
-        //                 this.val.day_wrap.innerHTML = `${i + 1}일`;
-        //                 this.val.day_value.classList.remove('active')
-        //                 this.dateUpdate({ day: i + 1 })
-        //             })
-        //         }
-        //     },
-
-        //     hour_active() {
-        //         this.val.hour_value.classList.add('active');
-        //     },
-
-        //     minute_active() {
-        //         this.val.minute_value.classList.add('active');
-        //     },
-
-        //     dateUpdate(newObj) {
-        //         this.val.resultDate = {...this.val.resultDate, ...newObj};
-        //     }
-        // }
-        // window.addEventListener('load', () => date.init())
-
-
-        
         const month_wrap = document.querySelector('.date.month');
         const month_value = document.querySelector('.month-value');
         const month_els = document.querySelectorAll('.month-value > li');
@@ -760,19 +682,17 @@
         const minute_wrap = document.querySelector('.date.minute');
         const minute_value = document.querySelector('.minute-value');
         const minute_els = document.querySelectorAll('.minute-value > li');
-        let resultDate = {
-            month: '',
-            day: '',
-            hour: '',
-            minute: '',
-        }
+        let resultDate = { month: '', day: '', hour: '', minute: '', }
 
         function month_active() {
-            month_value.classList.add('active')
+            month_value.classList.contains('active') ? month_value.classList.remove('active') : month_value.classList.add('active')
+            day_wrap.innerHTML = '일'
+            dateUpdate({ day: '' });
+
         }
 
         function day_active() {
-            day_value.classList.add('active')
+            day_value.classList.contains('active') ? day_value.classList.remove('active') : day_value.classList.add('active')
         }
 
 
@@ -790,6 +710,7 @@
                 `
             }
             day_value.innerHTML = lis;
+            day_wrap.classList.remove('none')
 
             // 동적으로 그려지는 day event
             const day_els = document.querySelectorAll('.day-value > li');
@@ -803,11 +724,11 @@
         }
 
         function hour_active() {
-            hour_value.classList.add('active')
+            hour_value.classList.contains('active') ? hour_value.classList.remove('active') : hour_value.classList.add('active')
         }
 
         function minute_active() {
-            minute_value.classList.add('active')
+            minute_value.classList.contains('active') ? minute_value.classList.remove('active') : minute_value.classList.add('active')
         }
 
         function dateUpdate(newObj) {
@@ -826,7 +747,7 @@
             month_els[i].addEventListener('click', () => {
                 month_wrap.innerHTML = `${i + 1}월` 
                 month_value.classList.remove('active')
-                day_update(i);
+                day_update(i + 1);
                 dateUpdate({ month: i + 1 })
             })
         }
