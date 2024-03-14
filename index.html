@@ -86,91 +86,563 @@
 
 </head>
 <body>
+ 
+
+
     
-    <style>
-        .date_wrap { display: flex; }
-        .date_item { border: 1px solid #a8a8a8; flex: 1 1 auto; }
-        .date_item .month-value,
-        .date_item .day-value,
-        .date_item .hour-value,
-        .date_item .minute-value { display: none; }
 
-        .date_item .month-value.active,
-        .date_item .day-value.active,
-        .date_item .hour-value.active,
-        .date_item .minute-value.active { display: block; }
-    </style>
-    <div class="date_wrap">
-        <!-- 월 -->
-        <div class="date_item">
-            <div class="date month">월</div>
-            <ul class="month-value">
-                <li><button type="button">1월</button></li>
-                <li><button type="button">2월</button></li>
-                <li><button type="button">3월</button></li>
-                <li><button type="button">4월</button></li>
-                <li><button type="button">5월</button></li>
-                <li><button type="button">6월</button></li>
-                <li><button type="button">7월</button></li>
-                <li><button type="button">8월</button></li>
-                <li><button type="button">9월</button></li>
-                <li><button type="button">10월</button></li>
-                <li><button type="button">11월</button></li>
-                <li><button type="button">12월</button></li>
+    <div class="event_part">
+        <h3 class="event_stitle"><span><strong data-fs-pc="44" data-fs-mo="44">위시카드 만들기</strong></span></h3>
+        <div class="event_wishcard">
+            <h4 class="wishcard_title" data-fs-pc="24" data-fs-mo="26">아래 일러스트 이미지를 선택하시고,<br class="m_show"> 위시카드를 만들어보세요!</h4>
+            <ul class="wishcard_list">
+                <li class="wishcard_item">
+                    <img src="./_images/test_img.png" data-wishcard="./_images/test_img.png" alt="예시 이미지">
+                    <button class="e_btn e_btn70 focus" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1" data-color="red">위시카드 만들기</button>
+                </li>
+                <li class="wishcard_item">
+                    <img src="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-preview-02-v08.png" data-wishcard="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-download-02-v08.png" alt="예시 이미지">
+                    <button class="e_btn e_btn70" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2" data-color="red">위시카드 만들기</button>
+                </li>
+                <li class="wishcard_item">
+                    <img src="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-preview-03-v08.png" data-wishcard="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-download-03-v08.png" alt="예시 이미지">
+                    <button class="e_btn e_btn70" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3" data-color="red">위시카드 만들기</button>
+                </li>
             </ul>
         </div>
-        <!-- //월 -->
-
-        <!-- 일 -->
-        <div class="date_item">
-            <div class="date day">일</div>
-            <ul class="day-value"></ul>
-        </div>
-        <!-- //일 -->
-
-        <!-- 시 -->
-        <div class="date_item">
-            <div class="date hour">시</div>
-            <ul class="hour-value">
-                <li><button type="button" data-date="1">1시</button></li>
-                <li><button type="button" data-date="2">2시</button></li>
-                <li><button type="button" data-date="3">3시</button></li>
-                <li><button type="button" data-date="4">4시</button></li>
-                <li><button type="button" data-date="5">5시</button></li>
-                <li><button type="button" data-date="6">6시</button></li>
-                <li><button type="button" data-date="7">7시</button></li>
-                <li><button type="button" data-date="8">8시</button></li>
-                <li><button type="button" data-date="9">9시</button></li>
-                <li><button type="button" data-date="11">11시</button></li>
-                <li><button type="button" data-date="12">12시</button></li>
-                <li><button type="button" data-date="13">13시</button></li>
-                <li><button type="button" data-date="14">14시</button></li>
-                <li><button type="button" data-date="15">15시</button></li>
-                <li><button type="button" data-date="16">16시</button></li>
-                <li><button type="button" data-date="17">17시</button></li>
-                <li><button type="button" data-date="18">18시</button></li>
-                <li><button type="button" data-date="19">19시</button></li>
-                <li><button type="button" data-date="20">20시</button></li>
-                <li><button type="button" data-date="21">21시</button></li>
-                <li><button type="button" data-date="22">22시</button></li>
-                <li><button type="button" data-date="23">23시</button></li>
-            </ul>
-        </div>
-        <!-- //시 -->
-
-        <!-- 분 -->
-        <div class="date_item">
-            <div class="date minute">분</div>
-            <ul class="minute-value">
-                <li><button type="button" data-date="15">15분</button></li>
-                <li><button type="button" data-date="30">30분</button></li>
-            </ul>
-        </div>
-        <!-- //분 -->
     </div>
+
+
     
+    <!-- s : 위시카드 팝업 -->
+    <div class="wishcard_popup" role="dialog" aria-modal="true">
+        <div class="wishcard_inner">
+            <button class="wishcard_close">닫기</button>
+            <div class="wishcard_body">
+                <!-- step one -->
+                <div class="wishcard_step step-one">
+                    <h3 class="wishcard_title" data-fs-pc="24" data-fs-mo="34">STEP 1. 소망 입력하기</h3>
+                    <p class="wishcard_desc" data-fs-pc="18" data-fs-mo="28">갤럭시 탭이 있다면 하고 싶은 소망을 입력해주세요.</p>
+                    <div class="wishcard_cont">
+                        <img id="inputImage" class="blind" src="" alt="선택 이미지" crossorigin="Anonymous">
+                        <div class="input-box">
+                            <label for="inputText" class="lb-line blind"></label>
+                            <input type="text" id="inputText" class="input-border" placeholder="신랑이름">
+                        </div>
+                        <div class="input-box">
+                            <label for="inputText2" class="lb-line blind"></label>
+                            <input type="text" id="inputText2" class="input-border" placeholder="신부이름">
+                        </div>
+                        
+                        <div class="input-box">
+                            <label for="inputText3" class="lb-line blind"></label>
+                            <input type="text" id="inputText3" class="input-border" placeholder="서울시 강남구 강남대로 123-12">
+                        </div>
+                        <div class="input-box" id="inputText4">
+                            <!-- <span class="month_input">4월</span>&nbsp;
+                            <span class="day_input">27일</span>&nbsp;
+                            <span class="hour_input">17시</span>&nbsp;
+                            <span class="minute_input">30분</span> -->
+                               
+                            <style>
+                                .date_wrap { display: flex; }
+                                .date_item { border: 1px solid #a8a8a8; flex: 1 1 auto; }
+                                .date_item .month-value,
+                                .date_item .day-value,
+                                .date_item .hour-value,
+                                .date_item .minute-value { display: none; }
+
+                                .date_item .month-value.active,
+                                .date_item .day-value.active,
+                                .date_item .hour-value.active,
+                                .date_item .minute-value.active { display: block; }
+                            </style>
+                            <div class="date_wrap">
+                                <!-- 월 -->
+                                <div class="date_item">
+                                    <div class="date month">월</div>
+                                    <ul class="month-value">
+                                        <li><button type="button">1월</button></li>
+                                        <li><button type="button">2월</button></li>
+                                        <li><button type="button">3월</button></li>
+                                        <li><button type="button">4월</button></li>
+                                        <li><button type="button">5월</button></li>
+                                        <li><button type="button">6월</button></li>
+                                        <li><button type="button">7월</button></li>
+                                        <li><button type="button">8월</button></li>
+                                        <li><button type="button">9월</button></li>
+                                        <li><button type="button">10월</button></li>
+                                        <li><button type="button">11월</button></li>
+                                        <li><button type="button">12월</button></li>
+                                    </ul>
+                                </div>
+                                <!-- //월 -->
+
+                                <!-- 일 -->
+                                <div class="date_item">
+                                    <div class="date day">일</div>
+                                    <ul class="day-value"></ul>
+                                </div>
+                                <!-- //일 -->
+
+                                <!-- 시 -->
+                                <div class="date_item">
+                                    <div class="date hour">시</div>
+                                    <ul class="hour-value">
+                                        <li><button type="button" data-date="1">1시</button></li>
+                                        <li><button type="button" data-date="2">2시</button></li>
+                                        <li><button type="button" data-date="3">3시</button></li>
+                                        <li><button type="button" data-date="4">4시</button></li>
+                                        <li><button type="button" data-date="5">5시</button></li>
+                                        <li><button type="button" data-date="6">6시</button></li>
+                                        <li><button type="button" data-date="7">7시</button></li>
+                                        <li><button type="button" data-date="8">8시</button></li>
+                                        <li><button type="button" data-date="9">9시</button></li>
+                                        <li><button type="button" data-date="11">11시</button></li>
+                                        <li><button type="button" data-date="12">12시</button></li>
+                                        <li><button type="button" data-date="13">13시</button></li>
+                                        <li><button type="button" data-date="14">14시</button></li>
+                                        <li><button type="button" data-date="15">15시</button></li>
+                                        <li><button type="button" data-date="16">16시</button></li>
+                                        <li><button type="button" data-date="17">17시</button></li>
+                                        <li><button type="button" data-date="18">18시</button></li>
+                                        <li><button type="button" data-date="19">19시</button></li>
+                                        <li><button type="button" data-date="20">20시</button></li>
+                                        <li><button type="button" data-date="21">21시</button></li>
+                                        <li><button type="button" data-date="22">22시</button></li>
+                                        <li><button type="button" data-date="23">23시</button></li>
+                                    </ul>
+                                </div>
+                                <!-- //시 -->
+
+                                <!-- 분 -->
+                                <div class="date_item">
+                                    <div class="date minute">분</div>
+                                    <ul class="minute-value">
+                                        <li><button type="button" data-date="15">15분</button></li>
+                                        <li><button type="button" data-date="30">30분</button></li>
+                                    </ul>
+                                </div>
+                                <!-- //분 -->
+                            </div>
+    
+                        </div>
+                        <div class="input-box">
+                            <label for="inputText5" class="lb-line blind"></label>
+                            <input type="text" id="inputText5" class="input-border" placeholder="서울시 강남구 강남대로 123-12">
+                        </div>
+                    </div>
+                    <div class="e_btn_wrap">
+                        <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1_write">다음</button>
+                        <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2_write">다음</button>
+                        <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3_write">다음</button>
+                    </div>
+                </div>
+                <!-- /step one -->
+                <!-- step two -->
+                <div class="wishcard_step step-two">
+                    <h3 class="wishcard_title" data-fs-pc="24" data-fs-mo="34">STEP 2. 이미지 다운로드</h3>
+                    <p class="wishcard_desc" data-fs-pc="18" data-fs-mo="28">완성된 위시카드 이미지를 다운로드해 주세요.</p>
+                    <div class="wishcard_cont">
+                        <input id="canvasText" class="blind" type="text" tabindex="-1">
+                        <input id="canvasText2" class="blind" type="text" tabindex="-1">
+                        <input id="canvasText3" class="blind" type="text" tabindex="-1">
+                        <input id="canvasText4" class="blind" type="text" tabindex="-1">
+                        <input id="canvasText5" class="blind" type="text" tabindex="-1">
+                        <img id="canvasImage" src="" alt="다운로드 이미지">
+                        <div id="canvasWrap"></div>
+                    </div>
+                    <div class="e_btn_wrap">
+                        <p class="special_text" data-fs-pc="18" data-fs-mo="24">이미지를 길게 눌러 다운로드 해주세요.</p>
+                        <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1_download">이미지 저장하기</button>
+                        <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2_download">이미지 저장하기</button>
+                        <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3_download">이미지 저장하기</button>
+                    </div>
+                </div>
+                <!-- /step two -->
+            </div>
+        </div>
+    </div>
+    <!-- e : 위시카드 팝업 -->
 
 
+
+    <!-- script -->
+	<script>
+		;(function(win,doc,callback){'use strict';callback=callback||function(){};function detach(){if(doc.addEventListener){doc.removeEventListener('DOMContentLoaded',completed);}else{doc.detachEvent('onreadystatechange',completed);}}function completed(){if(doc.addEventListener||event.type==='load'||doc.readyState==='complete'){detach();callback(window,window.jQuery);}}function init(){if (doc.addEventListener){doc.addEventListener('DOMContentLoaded',completed);}else{doc.attachEvent('onreadystatechange',completed);}}init();})(window,document,function(win,$){
+
+			$(function() {
+				// kv nav
+				$('.kv_nav').on('click', function() {
+					var target = $(this).attr('href');
+					$('html, body').animate({
+						scrollTop: $(target).offset().top
+					}, 300);
+				});
+
+				// video
+				$('.video_play').each(function() {
+					var $this = $(this);
+					var youtubeId = $this.attr('data-youtube-id');
+					/* $this.on('click', function() {
+						$('body').addClass('scrollLock');
+						$('.video_body').append('<div id="videoYoutube"></div>');
+						vodPlayer.create(youtubeId, "videoYoutube", "youtube", true);
+						$('.video_popup').show();
+					}); */
+				});
+				$('.video_close').on('click', function() {
+					$('body').removeClass('scrollLock');
+					$('.video_body').empty();
+					$('.video_popup').hide();
+				});
+				
+				// hashtag
+				$('.event_hashtag').each(function() {
+					var $this = $(this);
+					$this.find(".hashtag_button").on("click", function(e) {
+						e.preventDefault();
+						alert('해시태그가 복사되었습니다.');
+						var copyText = $this.find('.hashtag_value')[0];
+						copyText.select();
+						copyText.setSelectionRange(0, 9999);
+						document.execCommand('copy');
+					});
+				});
+
+				// file saver
+				var saveAs = saveAs||"undefined"!=typeof navigator&&navigator.msSaveOrOpenBlob&&navigator.msSaveOrOpenBlob.bind(navigator)||function(w){"use strict";if("undefined"==typeof navigator||!/MSIE [1-9]\./.test(navigator.userAgent)){var v=w.document,y=function(){return w.URL||w.webkitURL||w},b=v.createElementNS("http://www.w3.org/1999/xhtml","a"),h="download"in b,m=w.webkitRequestFileSystem,g=w.requestFileSystem||m||w.mozRequestFileSystem,r=function(e){(w.setImmediate||w.setTimeout)(function(){throw e},0)},R="application/octet-stream",O=0,E=function(e){function t(){"string"==typeof e?y().revokeObjectURL(e):e.remove()}w.chrome?t():setTimeout(t,10)},D=function(e,t,n){for(var o=(t=[].concat(t)).length;o--;){var i=e["on"+t[o]];if("function"==typeof i)try{i.call(e,n||e)}catch(e){r(e)}}},n=function(o,n){function e(){D(l,"writestart progress write writeend".split(" "))}function i(){!d&&t||(t=y().createObjectURL(o)),a?a.location.href=t:null==w.open(t,"_blank")&&"undefined"!=typeof safari&&(w.location.href=t),l.readyState=l.DONE,e(),E(t)}function r(e){return function(){if(l.readyState!==l.DONE)return e.apply(this,arguments)}}var t,a,s,c,f,l=this,u=o.type,d=!1,p={create:!0,exclusive:!1};if(l.readyState=l.INIT,n=n||"download",h)return t=y().createObjectURL(o),b.href=t,b.download=n,c=b,(f=v.createEvent("MouseEvents")).initMouseEvent("click",!0,!1,w,0,0,0,0,0,!1,!1,!1,!1,0,null),c.dispatchEvent(f),l.readyState=l.DONE,e(),void E(t);w.chrome&&u&&u!==R&&(s=o.slice||o.webkitSlice,o=s.call(o,0,o.size,R),d=!0),m&&"download"!==n&&(n+=".download"),u!==R&&!m||(a=w),g?(O+=o.size,g(w.TEMPORARY,O,r(function(e){e.root.getDirectory("saved",p,r(function(e){function t(){e.getFile(n,p,r(function(n){n.createWriter(r(function(t){t.onwriteend=function(e){a.location.href=n.toURL(),l.readyState=l.DONE,D(l,"writeend",e),E(n)},t.onerror=function(){var e=t.error;e.code!==e.ABORT_ERR&&i()},"writestart progress write abort".split(" ").forEach(function(e){t["on"+e]=l["on"+e]}),t.write(o),l.abort=function(){t.abort(),l.readyState=l.DONE},l.readyState=l.WRITING}),i)}),i)}e.getFile(n,{create:!1},r(function(e){e.remove(),t()}),r(function(e){(e.code===e.NOT_FOUND_ERR?t:i)()}))}),i)}),i)):i()},e=n.prototype;return e.abort=function(){this.readyState=this.DONE,D(this,"abort")},e.readyState=e.INIT=0,e.WRITING=1,e.DONE=2,e.error=e.onwritestart=e.onprogress=e.onwrite=e.onabort=e.onerror=e.onwriteend=null,function(e,t){return new n(e,t)}}}("undefined"!=typeof self&&self||"undefined"!=typeof window&&window||this.content);"undefined"!=typeof module&&null!==module?module.exports=saveAs:"undefined"!=typeof define&&null!==define&&null!=define.amd&&define([],function(){return saveAs}),function(e){"use strict";var l,u=e.Uint8Array,t=e.HTMLCanvasElement,n=t&&t.prototype,c=/\s*;\s*base64\s*(?:;|$)/i,f="toDataURL";u&&(l=new u([62,-1,-1,-1,63,52,53,54,55,56,57,58,59,60,61,-1,-1,-1,0,-1,-1,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,-1,-1,-1,-1,-1,-1,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51])),t&&!n.toBlob&&(n.toBlob=function(e,t){if(t=t||"image/png",this.mozGetAsFile)e(this.mozGetAsFile("canvas",t));else if(this.msToBlob&&/^\s*image\/png\s*(?:$|;)/i.test(t))e(this.msToBlob());else{var n,o=Array.prototype.slice.call(arguments,1),i=this[f].apply(this,o),r=i.indexOf(","),a=i.substring(r+1),s=c.test(i.substring(0,r));Blob.fake?((n=new Blob).encoding=s?"base64":"URI",n.data=a,n.size=a.length):u&&(n=s?new Blob([function(e){for(var t,n,o=e.length,i=new u(o/4*3|0),r=0,a=0,s=[0,0],c=0,f=0;o--;)n=e.charCodeAt(r++),255!==(t=l[n-43])&&void 0!==t&&(s[1]=s[0],s[0]=n,f=f<<6|t,4===++c&&(i[a++]=f>>>16,61!==s[1]&&(i[a++]=f>>>8),61!==s[0]&&(i[a++]=f),c=0));return i}(a)],{type:t}):new Blob([decodeURIComponent(a)],{type:t})),e(n)}},n.toDataURLHD?n.toBlobHD=function(){f="toDataURLHD";var e=this.toBlob();return f="toDataURL",e}:n.toBlobHD=n.toBlob)}("undefined"!=typeof self&&self||"undefined"!=typeof window&&window||this.content||this);
+			
+
+
+				// download
+				$('.wishcard_item').each(function() {
+					var $this = $(this);
+					var thisIndex = $this.index();
+					var imgSrc = $this.find('img').attr('data-wishcard');
+
+					$this.find('.e_btn').on('click', function () {
+                        const colorValue = this.dataset.color;
+                        $('.wishcard_next').attr('data-color', colorValue);
+						$('.wishcard_item').find('.e_btn').removeClass('focus');
+						$(this).addClass('focus');
+						$('body').addClass('scrollLock');
+						$('.wishcard_popup').show();
+						$('.wishcard_next').eq(thisIndex).show();
+						$('#inputImage').attr('src', imgSrc);
+						$('.wishcard_inner').attr('tabindex', '0').focus();
+						if((navigator.userAgent.indexOf("KAKAO") > -1) || (/iPhone|iPad|iPod/i.test(navigator.userAgent))){
+							$('.special_text').show();
+							$('.wishcard_save').hide();
+						} else {
+							$('.special_text').hide();
+							$('.wishcard_save').eq(thisIndex).show();
+						}
+					});
+				});
+
+
+
+                // 다음버튼 클릭 시.. 스탭1에서 스탭2로
+				$('.wishcard_next').on('click', function() {
+                    const colorValue = this.dataset.color;
+					let inputTextVal = $('#inputText').val();
+					let inputTextVal2 = $('#inputText2').val();
+					let inputTextVal3 = $('#inputText3').val();
+					let inputTextVal4 = document.querySelector('#inputText3'); //날짜 객체 값 받아오기 
+					let inputTextVal5 = $('#inputText5').val();
+
+
+                    console.log('resultDate??', resultDate)
+                    inputTextVal4.innerHTML = `${resultDate.month}월 ${resultDate.day}일 ${resultDate.day}시 ${resultDate.day}분`
+
+
+                    // 인풋 밸류를 스탭2에 있는 인풋에 넣음. 왜 ? 
+                    // 캔버스 함수 실행 후 스탭 2 캔버스 랩에 어펜드 후 
+					if(inputTextVal && inputTextVal2 && inputTextVal3 && inputTextVal5) {
+						$('.wishcard_step.step-one').hide();
+						$('.wishcard_step.step-two').show();
+						$('.wishcard_save').focus();
+						$('#canvasText').val(inputTextVal);
+						$('#canvasText2').val(inputTextVal2);
+						$('#canvasText3').val(inputTextVal3);
+						$('#canvasText4').val(inputTextVal4.textContent);
+						$('#canvasText5').val(inputTextVal5);
+						let canvas = getCanvas(colorValue);
+						$('#canvasWrap').append(canvas);
+						let canvasDownload = document.getElementById('canvasDownload');
+						canvasDownload.src = canvasDownload.toDataURL();
+						$("#canvasImage").attr("src", canvasDownload.src);
+					} else {
+						alert("메시지를 입력하세요.");
+					}
+
+				});
+
+
+
+                // 이미지 저장
+				$('.wishcard_save').on('click', function() {
+					var thisIndex = $(this).parent().find('.wishcard_save').index(this);
+					var canvasDownload = document.getElementById('canvasDownload');
+					canvasDownload.src = canvasDownload.toDataURL();
+					canvasDownload.toBlob(function (blob) {
+						saveAs(blob, "wishcard" + (thisIndex + 1) + ".png");
+					});
+				});
+
+
+                // 팝업 닫을 때 
+				$('.wishcard_close').on('click', function() {
+					$('body').removeClass('scrollLock');
+					$('#inputText').val('');
+					$('#inputText2').val('');
+					$('#inputText3').val('');
+					$('#inputText4').val('');
+					$('#inputText5').val('');
+					$('#inputImage').attr('src', '');
+					$('#canvasImage').attr('src', '');
+					$('#canvasWrap').empty();
+					$('.wishcard_step.step-one').show();
+					$('.wishcard_step.step-two').hide();
+					$('.wishcard_popup').hide();
+					$('.wishcard_next').hide();
+					$('.wishcard_save').hide();
+					$('.wishcard_item').find('.e_btn.focus').focus();
+
+                    // 여기에 일시도 초기화 해야함. 아직 작업전
+				});
+
+
+                // 인풋 체크
+				$('#inputText').on('keyup', function() {
+					var tempText = $(this);
+					var tempChar = '';
+					var tempChar2 = '';
+					var countChar = 0;
+					var tempHangul = 0;
+					var maxSize = 20;
+					for(var i = 0 ; i < tempText.val().length; i++) {
+						tempChar = tempText.val().charAt(i);
+						if(escape(tempChar).length > 4) {
+							countChar += 2;
+							tempHangul++;
+						} else {
+							countChar++;
+						}
+					}
+					if((countChar-tempHangul) > maxSize) {
+						tempChar2 = tempText.val().substr(0, maxSize);
+						tempText.val(tempChar2);
+						alert('20자 이하로 입력하세요.');
+					}
+				});
+
+
+
+				$('.wishcard_next, .wishcard_save').on("keydown", function(event) {
+					if (!event.shiftKey && (event.keyCode || event.which) === 9) {
+						event.preventDefault();
+						$('.wishcard_close').focus();
+					}	
+				});
+
+
+				$('.wishcard_close').on("keydown", function(event) {
+					if (event.shiftKey && (event.keyCode || event.which) === 9) {
+						event.preventDefault();
+						$('.wishcard_next, .wishcard_save').focus();
+					}	
+				});
+
+
+				function getCanvas(txtColor) {
+					var canvas = document.createElement("canvas");
+					canvas.id = "canvasDownload";
+					canvas.width = 1080;
+					canvas.height = 1350;
+					// 컨테이너
+					var ctx = canvas.getContext("2d");
+					ctx.fillStyle="#fff";
+					ctx.fillRect(0, 0, canvas.width, canvas.height);
+					ctx.fill();
+					// 이미지
+					var canvasImage = document.getElementById("inputImage");
+					ctx.drawImage(canvasImage, 0, 0, 1080, 1350);
+					// 텍스트
+					var textInput1 = document.querySelector('#canvasText').value;
+					var textInput2 = document.querySelector('#canvasText2').value;
+					var textInput3 = document.querySelector('#canvasText3').value;
+					var textInput5 = document.querySelector('#canvasText5').value;
+
+					ctx.fillStyle = txtColor;
+					ctx.textBaseline = "bottom";
+					var width1 = '300';
+					var width2 = '300';
+					var width3 = '700';
+					var fontSize1 = '50px';
+					var fontSize2 = '29px';
+                    // 글자수에 따라 줄바꿈 되어야 할 경우 아래 함수 사용. lines 반복문은 그대로 유지해둠
+					// var lines1 = fragmentText(ctx, textInput1, width1);
+					var lines1 = [textInput1]
+					var lines2 = [textInput2]
+					var lines3 = [textInput3]
+					var lines5 = [textInput5]
+
+                    // console.log('lines', lines)
+
+					lines1.forEach(function(line, i) {
+                        ctx.textAlign ='right'
+                        ctx.font = "bold 60px SamsungOneKorean";
+                        ctx.letterSpacing = "-9px";
+						if(i > 0) {
+							ctx.fillText(line, 513, (((i + 1) * 1.1) * parseInt(fontSize1, 0)) + 1000);
+						} else {
+							ctx.fillText(line, 513, parseInt(fontSize1, 0) + 1000);
+						}
+					});
+                    // 서울시 강남구 강남대로 123-12
+                    lines2.forEach(function(line, i) {
+                        ctx.textAlign = 'left'
+                        ctx.font = "bold 60px SamsungOneKorean";
+                        ctx.letterSpacing = "-9px";
+						if(i > 0) {
+							ctx.fillText(line, 557, (((i + 1) * 1.1) * parseInt(fontSize1, 0)) + 1000);
+						} else {
+							ctx.fillText(line, 557, parseInt(fontSize1, 0) + 1000);
+						}
+					});
+
+
+                    lines3.forEach(function(line, i) {
+                        ctx.font = "bold 34px SamsungOneKorean";
+                        ctx.letterSpacing = "-3px";
+                        ctx.textAlign = "center";
+						if(i > 0) {
+							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1100);
+						} else {
+							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1100);
+						}
+					});
+
+                    
+                    lines5.forEach(function(line, i) {
+                        ctx.font = "normal 34px SamsungOneKorean";
+                        ctx.letterSpacing = "-3px";
+                        ctx.textAlign = "center";
+						if(i > 0) {
+							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1235);
+						} else {
+							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1235);
+						}
+					});
+
+
+					ctx.restore();
+					return canvas;
+				}
+
+				function fragmentText(ctx, text, maxWidth) {
+					// var words = text.split(" "),
+					var words = [text];
+					var lines = [];
+					var line = "";
+
+					if (ctx.measureText(text).width < maxWidth) {
+						return [text];
+					}
+					while (words.length > 0) {
+						while (ctx.measureText(words[0]).width >= maxWidth) {
+							var tmp = words[0];
+							words[0] = tmp.slice(0, -1);
+							if (words.length > 1) {
+								words[1] = tmp.slice(-1) + words[1];
+							} else {
+								words.push(tmp.slice(-1));
+							}
+						}
+
+						if (ctx.measureText(line + words[0]).width < maxWidth) {
+							line += words.shift() + " ";
+						} else {
+							lines.push(line);
+							line = "";
+						}
+						if (words.length === 0) {
+							lines.push(line);
+						}
+					}
+					return lines;
+				}
+
+
+
+
+				// scroll ani
+				// scrollAni('.feature_title', 'ani_slideInUp', 1.2, 2);
+				// scrollAni('.event_title strong', 'ani_slideInRight', 1.2, 2);
+			
+				// scroll ani up & down
+				// function scrollAni(target, aniClasses, elemPosition, elemSize) {
+				// 	if ($(target).length) {
+				// 		$(target).each(function() {
+				// 			var $window = $(window),
+				// 				$target = $(this);
+				// 			$window.on("scroll resize", function() {
+				// 				var windowScrollTop = $(this).scrollTop(),
+				// 					windowHeight = $(this).height();
+				// 				if (windowScrollTop >= $target.offset().top - windowHeight / elemPosition + $target.height() / elemSize && windowScrollTop <= $target.offset().top + $target.height()) {
+				// 					$target.addClass(aniClasses);
+				// 				}
+				// 			});
+				// 		});
+				// 	}
+				// }
+
+
+
+
+
+
+
+
+
+                // 무풍 로직 
+                // const product = ['무풍에어컨 갤러리', '무풍에어컨 클래식', '무풍 시스템에어컨', '벽걸이 에어컨', '창문형 에어컨']
+                // const productColor = ['화이트', '베이지', '그레이', '브라운', '기타(라벤더)']
+
+
+                // const pro = [{
+                //     productName: '무풍에어컨 갤러리',
+                //     productColor: ['화이트', '베이지', '그레이', '브라운', '기타(라벤더)'],
+                //     message: ['a', 'b', 'c', 'd'],
+                //     layout: ['a', 'b', 'c'],
+                //     backgroundColor: ['a', 'b', 'c']
+                // }]
+                //경우의 수 총 540개 
+
+
+                // 1. 사용자가 셀렉한걸 변수에 저장하고 
+                // 2. 클릭 시 dom src값에 업데이트 
+                // 2. 업데이트된 dom을 캔버스에 넣고 
+                // 3. 아이디값을 캔버스에 합성 후 
+                // 4. 다운로드
+
+                // `<img src="${productName}_${productColor}_${massage}_${['layout1, ..2, ..3'].Math.random()}_${['backgroundColor1, ..2, ..3'].Math.random()}.jpg">`
+
+
+                // 확인해야할 것 
+                // 1. 파일명 정리 위처럼 
+                // 2. 입력받는 닉네임? 아님 인스타 아이디? 
+
+
+			});
+
+		});
+	</script>
+
+
+    
     <script>
 
 
@@ -310,10 +782,6 @@
             if(idx === 2) dd = 29;
             if(idx === 4 || idx === 6 || idx === 9 || idx === 11) dd = 30;
 
-            console.log('???', dd)
-
-            
-
             for(let i = 0; i < dd; i++) {
                 lis += `
                     <li>
@@ -321,15 +789,7 @@
                     </li>
                 `
             }
-
-            
-            console.log(lis)
-
-
-
             day_value.innerHTML = lis;
-
-            
 
             // 동적으로 그려지는 day event
             const day_els = document.querySelectorAll('.day-value > li');
@@ -344,7 +804,6 @@
 
         function hour_active() {
             hour_value.classList.add('active')
-
         }
 
         function minute_active() {
@@ -391,451 +850,6 @@
     </script>
 
 
-    
-
-    <div class="event_part">
-        <h3 class="event_stitle"><span><strong data-fs-pc="44" data-fs-mo="44">위시카드 만들기</strong></span></h3>
-        <div class="event_wishcard">
-            <h4 class="wishcard_title" data-fs-pc="24" data-fs-mo="26">아래 일러스트 이미지를 선택하시고,<br class="m_show"> 위시카드를 만들어보세요!</h4>
-            <ul class="wishcard_list">
-                <li class="wishcard_item">
-                    <img src="./_images/test_img.png" data-wishcard="./_images/test_img.png" alt="예시 이미지">
-                    <button class="e_btn e_btn70 focus" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1" data-color="red">위시카드 만들기</button>
-                </li>
-                <li class="wishcard_item">
-                    <img src="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-preview-02-v08.png" data-wishcard="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-download-02-v08.png" alt="예시 이미지">
-                    <button class="e_btn e_btn70" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2" data-color="red">위시카드 만들기</button>
-                </li>
-                <li class="wishcard_item">
-                    <img src="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-preview-03-v08.png" data-wishcard="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-download-03-v08.png" alt="예시 이미지">
-                    <button class="e_btn e_btn70" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3" data-color="red">위시카드 만들기</button>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <!-- s : 위시카드 팝업 -->
-    <div class="wishcard_popup" role="dialog" aria-modal="true">
-        <div class="wishcard_inner">
-            <button class="wishcard_close">닫기</button>
-            <div class="wishcard_body">
-                <!-- step one -->
-                <div class="wishcard_step step-one">
-                    <h3 class="wishcard_title" data-fs-pc="24" data-fs-mo="34">STEP 1. 소망 입력하기</h3>
-                    <p class="wishcard_desc" data-fs-pc="18" data-fs-mo="28">갤럭시 탭이 있다면 하고 싶은 소망을 입력해주세요.</p>
-                    <div class="wishcard_cont">
-                        <img id="inputImage" class="blind" src="" alt="선택 이미지" crossorigin="Anonymous">
-                        <div class="input-box">
-                            <label for="inputText" class="lb-line blind"></label>
-                            <input type="text" id="inputText" class="input-border" placeholder="신랑이름">
-                        </div>
-                        <div class="input-box">
-                            <label for="inputText2" class="lb-line blind"></label>
-                            <input type="text" id="inputText2" class="input-border" placeholder="신부이름">
-                        </div>
-                        <div class="input-box">
-                            <label for="inputText3" class="lb-line blind"></label>
-                            <input type="text" id="inputText3" class="input-border" placeholder="서울시 강남구 강남대로 123-12">
-                        </div>
-                        <div class="input-box" id="inputText4">
-                            <span class="month_input">4월</span>&nbsp;
-                            <span class="day_input">27일</span>&nbsp;
-                            <span class="hour_input">17시</span>&nbsp;
-                            <span class="minute_input">30분</span>
-                        </div>
-                        <div class="input-box">
-                            <label for="inputText3" class="lb-line blind"></label>
-                            <input type="text" id="inputText3" class="input-border" placeholder="서울시 강남구 강남대로 123-12">
-                        </div>
-                    </div>
-                    <div class="e_btn_wrap">
-                        <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1_write">다음</button>
-                        <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2_write">다음</button>
-                        <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3_write">다음</button>
-                    </div>
-                </div>
-                <!-- /step one -->
-                <!-- step two -->
-                <div class="wishcard_step step-two">
-                    <h3 class="wishcard_title" data-fs-pc="24" data-fs-mo="34">STEP 2. 이미지 다운로드</h3>
-                    <p class="wishcard_desc" data-fs-pc="18" data-fs-mo="28">완성된 위시카드 이미지를 다운로드해 주세요.</p>
-                    <div class="wishcard_cont">
-                        <input id="canvasText" class="blind" type="text" tabindex="-1">
-                        <input id="canvasText2" class="blind" type="text" tabindex="-1">
-                        <input id="canvasText3" class="blind" type="text" tabindex="-1">
-                        <img id="canvasImage" src="" alt="다운로드 이미지">
-                        <div id="canvasWrap"></div>
-                    </div>
-                    <div class="e_btn_wrap">
-                        <p class="special_text" data-fs-pc="18" data-fs-mo="24">이미지를 길게 눌러 다운로드 해주세요.</p>
-                        <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1_download">이미지 저장하기</button>
-                        <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2_download">이미지 저장하기</button>
-                        <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3_download">이미지 저장하기</button>
-                    </div>
-                </div>
-                <!-- /step two -->
-            </div>
-        </div>
-    </div>
-    <!-- e : 위시카드 팝업 -->
-
-
-
-    <!-- script -->
-	<script>
-		;(function(win,doc,callback){'use strict';callback=callback||function(){};function detach(){if(doc.addEventListener){doc.removeEventListener('DOMContentLoaded',completed);}else{doc.detachEvent('onreadystatechange',completed);}}function completed(){if(doc.addEventListener||event.type==='load'||doc.readyState==='complete'){detach();callback(window,window.jQuery);}}function init(){if (doc.addEventListener){doc.addEventListener('DOMContentLoaded',completed);}else{doc.attachEvent('onreadystatechange',completed);}}init();})(window,document,function(win,$){
-
-			$(function() {
-				// kv nav
-				$('.kv_nav').on('click', function() {
-					var target = $(this).attr('href');
-					$('html, body').animate({
-						scrollTop: $(target).offset().top
-					}, 300);
-				});
-
-				// video
-				$('.video_play').each(function() {
-					var $this = $(this);
-					var youtubeId = $this.attr('data-youtube-id');
-					/* $this.on('click', function() {
-						$('body').addClass('scrollLock');
-						$('.video_body').append('<div id="videoYoutube"></div>');
-						vodPlayer.create(youtubeId, "videoYoutube", "youtube", true);
-						$('.video_popup').show();
-					}); */
-				});
-				$('.video_close').on('click', function() {
-					$('body').removeClass('scrollLock');
-					$('.video_body').empty();
-					$('.video_popup').hide();
-				});
-				
-				// hashtag
-				$('.event_hashtag').each(function() {
-					var $this = $(this);
-					$this.find(".hashtag_button").on("click", function(e) {
-						e.preventDefault();
-						alert('해시태그가 복사되었습니다.');
-						var copyText = $this.find('.hashtag_value')[0];
-						copyText.select();
-						copyText.setSelectionRange(0, 9999);
-						document.execCommand('copy');
-					});
-				});
-
-				// file saver
-				var saveAs = saveAs||"undefined"!=typeof navigator&&navigator.msSaveOrOpenBlob&&navigator.msSaveOrOpenBlob.bind(navigator)||function(w){"use strict";if("undefined"==typeof navigator||!/MSIE [1-9]\./.test(navigator.userAgent)){var v=w.document,y=function(){return w.URL||w.webkitURL||w},b=v.createElementNS("http://www.w3.org/1999/xhtml","a"),h="download"in b,m=w.webkitRequestFileSystem,g=w.requestFileSystem||m||w.mozRequestFileSystem,r=function(e){(w.setImmediate||w.setTimeout)(function(){throw e},0)},R="application/octet-stream",O=0,E=function(e){function t(){"string"==typeof e?y().revokeObjectURL(e):e.remove()}w.chrome?t():setTimeout(t,10)},D=function(e,t,n){for(var o=(t=[].concat(t)).length;o--;){var i=e["on"+t[o]];if("function"==typeof i)try{i.call(e,n||e)}catch(e){r(e)}}},n=function(o,n){function e(){D(l,"writestart progress write writeend".split(" "))}function i(){!d&&t||(t=y().createObjectURL(o)),a?a.location.href=t:null==w.open(t,"_blank")&&"undefined"!=typeof safari&&(w.location.href=t),l.readyState=l.DONE,e(),E(t)}function r(e){return function(){if(l.readyState!==l.DONE)return e.apply(this,arguments)}}var t,a,s,c,f,l=this,u=o.type,d=!1,p={create:!0,exclusive:!1};if(l.readyState=l.INIT,n=n||"download",h)return t=y().createObjectURL(o),b.href=t,b.download=n,c=b,(f=v.createEvent("MouseEvents")).initMouseEvent("click",!0,!1,w,0,0,0,0,0,!1,!1,!1,!1,0,null),c.dispatchEvent(f),l.readyState=l.DONE,e(),void E(t);w.chrome&&u&&u!==R&&(s=o.slice||o.webkitSlice,o=s.call(o,0,o.size,R),d=!0),m&&"download"!==n&&(n+=".download"),u!==R&&!m||(a=w),g?(O+=o.size,g(w.TEMPORARY,O,r(function(e){e.root.getDirectory("saved",p,r(function(e){function t(){e.getFile(n,p,r(function(n){n.createWriter(r(function(t){t.onwriteend=function(e){a.location.href=n.toURL(),l.readyState=l.DONE,D(l,"writeend",e),E(n)},t.onerror=function(){var e=t.error;e.code!==e.ABORT_ERR&&i()},"writestart progress write abort".split(" ").forEach(function(e){t["on"+e]=l["on"+e]}),t.write(o),l.abort=function(){t.abort(),l.readyState=l.DONE},l.readyState=l.WRITING}),i)}),i)}e.getFile(n,{create:!1},r(function(e){e.remove(),t()}),r(function(e){(e.code===e.NOT_FOUND_ERR?t:i)()}))}),i)}),i)):i()},e=n.prototype;return e.abort=function(){this.readyState=this.DONE,D(this,"abort")},e.readyState=e.INIT=0,e.WRITING=1,e.DONE=2,e.error=e.onwritestart=e.onprogress=e.onwrite=e.onabort=e.onerror=e.onwriteend=null,function(e,t){return new n(e,t)}}}("undefined"!=typeof self&&self||"undefined"!=typeof window&&window||this.content);"undefined"!=typeof module&&null!==module?module.exports=saveAs:"undefined"!=typeof define&&null!==define&&null!=define.amd&&define([],function(){return saveAs}),function(e){"use strict";var l,u=e.Uint8Array,t=e.HTMLCanvasElement,n=t&&t.prototype,c=/\s*;\s*base64\s*(?:;|$)/i,f="toDataURL";u&&(l=new u([62,-1,-1,-1,63,52,53,54,55,56,57,58,59,60,61,-1,-1,-1,0,-1,-1,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,-1,-1,-1,-1,-1,-1,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51])),t&&!n.toBlob&&(n.toBlob=function(e,t){if(t=t||"image/png",this.mozGetAsFile)e(this.mozGetAsFile("canvas",t));else if(this.msToBlob&&/^\s*image\/png\s*(?:$|;)/i.test(t))e(this.msToBlob());else{var n,o=Array.prototype.slice.call(arguments,1),i=this[f].apply(this,o),r=i.indexOf(","),a=i.substring(r+1),s=c.test(i.substring(0,r));Blob.fake?((n=new Blob).encoding=s?"base64":"URI",n.data=a,n.size=a.length):u&&(n=s?new Blob([function(e){for(var t,n,o=e.length,i=new u(o/4*3|0),r=0,a=0,s=[0,0],c=0,f=0;o--;)n=e.charCodeAt(r++),255!==(t=l[n-43])&&void 0!==t&&(s[1]=s[0],s[0]=n,f=f<<6|t,4===++c&&(i[a++]=f>>>16,61!==s[1]&&(i[a++]=f>>>8),61!==s[0]&&(i[a++]=f),c=0));return i}(a)],{type:t}):new Blob([decodeURIComponent(a)],{type:t})),e(n)}},n.toDataURLHD?n.toBlobHD=function(){f="toDataURLHD";var e=this.toBlob();return f="toDataURL",e}:n.toBlobHD=n.toBlob)}("undefined"!=typeof self&&self||"undefined"!=typeof window&&window||this.content||this);
-			
-
-
-				// download
-				$('.wishcard_item').each(function() {
-					var $this = $(this);
-					var thisIndex = $this.index();
-					var imgSrc = $this.find('img').attr('data-wishcard');
-
-					$this.find('.e_btn').on('click', function () {
-                        const colorValue = this.dataset.color;
-                        $('.wishcard_next').attr('data-color', colorValue);
-						$('.wishcard_item').find('.e_btn').removeClass('focus');
-						$(this).addClass('focus');
-						$('body').addClass('scrollLock');
-						$('.wishcard_popup').show();
-						$('.wishcard_next').eq(thisIndex).show();
-						$('#inputImage').attr('src', imgSrc);
-						$('.wishcard_inner').attr('tabindex', '0').focus();
-						if((navigator.userAgent.indexOf("KAKAO") > -1) || (/iPhone|iPad|iPod/i.test(navigator.userAgent))){
-							$('.special_text').show();
-							$('.wishcard_save').hide();
-						} else {
-							$('.special_text').hide();
-							$('.wishcard_save').eq(thisIndex).show();
-						}
-					});
-				});
-
-
-
-                // 다음버튼 클릭 시.. 스탭1에서 스탭2로
-				$('.wishcard_next').on('click', function() {
-                    const colorValue = this.dataset.color;
-					let inputTextVal = $('#inputText').val();
-					let inputTextVal2 = $('#inputText2').val();
-					let inputTextVal3 = $('#inputText3').val();
-                    // 라디오 
-
-
-                    // 인풋 밸류를 스탭2에 있는 인풋에 넣음. 왜 ? 
-                    // 캔버스 함수 실행 후 스탭 2 캔버스 랩에 어펜드 후 
-					if(inputTextVal && inputTextVal2 && inputTextVal3) {
-                        console.log('asdasdasd')
-						$('.wishcard_step.step-one').hide();
-						$('.wishcard_step.step-two').show();
-						$('.wishcard_save').focus();
-						$('#canvasText').val(inputTextVal);
-						$('#canvasText2').val(inputTextVal2);
-						$('#canvasText3').val(inputTextVal3);
-						let canvas = getCanvas(colorValue);
-						$('#canvasWrap').append(canvas);
-						let canvasDownload = document.getElementById('canvasDownload');
-						canvasDownload.src = canvasDownload.toDataURL();
-						$("#canvasImage").attr("src", canvasDownload.src);
-					} else {
-						alert("메시지를 입력하세요.");
-					}
-
-				});
-
-
-
-
-                
-
-
-
-
-
-				$('.wishcard_save').on('click', function() {
-					var thisIndex = $(this).parent().find('.wishcard_save').index(this);
-					var canvasDownload = document.getElementById('canvasDownload');
-					canvasDownload.src = canvasDownload.toDataURL();
-					canvasDownload.toBlob(function (blob) {
-						saveAs(blob, "wishcard" + (thisIndex + 1) + ".png");
-					});
-				});
-
-
-
-				$('.wishcard_close').on('click', function() {
-					$('body').removeClass('scrollLock');
-					$('#inputText').val('');
-					$('#inputText2').val('');
-					$('#inputText3').val('');
-					$('#inputImage').attr('src', '');
-					$('#canvasImage').attr('src', '');
-					$('#canvasWrap').empty();
-					$('.wishcard_step.step-one').show();
-					$('.wishcard_step.step-two').hide();
-					$('.wishcard_popup').hide();
-					$('.wishcard_next').hide();
-					$('.wishcard_save').hide();
-					$('.wishcard_item').find('.e_btn.focus').focus();
-				});
-
-
-
-				$('#inputText').on('keyup', function() {
-					var tempText = $(this);
-					var tempChar = '';
-					var tempChar2 = '';
-					var countChar = 0;
-					var tempHangul = 0;
-					var maxSize = 20;
-					for(var i = 0 ; i < tempText.val().length; i++) {
-						tempChar = tempText.val().charAt(i);
-						if(escape(tempChar).length > 4) {
-							countChar += 2;
-							tempHangul++;
-						} else {
-							countChar++;
-						}
-					}
-					if((countChar-tempHangul) > maxSize) {
-						tempChar2 = tempText.val().substr(0, maxSize);
-						tempText.val(tempChar2);
-						alert('20자 이하로 입력하세요.');
-					}
-				});
-
-
-
-				$('.wishcard_next, .wishcard_save').on("keydown", function(event) {
-					if (!event.shiftKey && (event.keyCode || event.which) === 9) {
-						event.preventDefault();
-						$('.wishcard_close').focus();
-					}	
-				});
-
-
-				$('.wishcard_close').on("keydown", function(event) {
-					if (event.shiftKey && (event.keyCode || event.which) === 9) {
-						event.preventDefault();
-						$('.wishcard_next, .wishcard_save').focus();
-					}	
-				});
-
-
-				function getCanvas(txtColor) {
-					var canvas = document.createElement("canvas");
-					canvas.id = "canvasDownload";
-					canvas.width = 1080;
-					canvas.height = 1350;
-					// 컨테이너
-					var ctx = canvas.getContext("2d");
-					ctx.fillStyle="#fff";
-					ctx.fillRect(0, 0, canvas.width, canvas.height);
-					ctx.fill();
-					// 이미지
-					var canvasImage = document.getElementById("inputImage");
-					ctx.drawImage(canvasImage, 0, 0, 1080, 1350);
-					// 텍스트
-					var textInput1 = document.querySelector('#canvasText').value;
-					var textInput2 = document.querySelector('#canvasText2').value;
-					var textInput3 = document.querySelector('#canvasText3').value;
-					ctx.fillStyle = txtColor;
-					ctx.textBaseline = "bottom";
-					var width1 = '300';
-					var width2 = '300';
-					var width3 = '700';
-					var fontSize1 = '50px';
-					var fontSize2 = '29px';
-                    // 글자수에 따라 줄바꿈 되어야 할 경우 아래 함수 사용. lines 반복문은 그대로 유지해둠
-					// var lines1 = fragmentText(ctx, textInput1, width1);
-					var lines1 = [textInput1]
-					var lines2 = [textInput2]
-					var lines3 = [textInput3]
-
-                    // console.log('lines', lines)
-
-					lines1.forEach(function(line, i) {
-                        ctx.textAlign ='right'
-                        ctx.font = "bold 60px SamsungOneKorean";
-                        ctx.letterSpacing = "-9px";
-						if(i > 0) {
-							ctx.fillText(line, 513, (((i + 1) * 1.1) * parseInt(fontSize1, 0)) + 1000);
-						} else {
-							ctx.fillText(line, 513, parseInt(fontSize1, 0) + 1000);
-						}
-					});
-                    // 서울시 강남구 강남대로 123-12
-                    lines2.forEach(function(line, i) {
-                        ctx.textAlign = 'left'
-                        ctx.font = "bold 60px SamsungOneKorean";
-                        ctx.letterSpacing = "-9px";
-						if(i > 0) {
-							ctx.fillText(line, 557, (((i + 1) * 1.1) * parseInt(fontSize1, 0)) + 1000);
-						} else {
-							ctx.fillText(line, 557, parseInt(fontSize1, 0) + 1000);
-						}
-					});
-
-
-                    lines3.forEach(function(line, i) {
-                        ctx.font = "bold 34px SamsungOneKorean";
-                        ctx.letterSpacing = "-3px";
-                        ctx.textAlign = "center";
-						if(i > 0) {
-							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1100);
-						} else {
-							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1100);
-						}
-					});
-
-					ctx.restore();
-					return canvas;
-				}
-
-				function fragmentText(ctx, text, maxWidth) {
-					// var words = text.split(" "),
-					var words = [text];
-					var lines = [];
-					var line = "";
-
-					if (ctx.measureText(text).width < maxWidth) {
-						return [text];
-					}
-					while (words.length > 0) {
-						while (ctx.measureText(words[0]).width >= maxWidth) {
-							var tmp = words[0];
-							words[0] = tmp.slice(0, -1);
-							if (words.length > 1) {
-								words[1] = tmp.slice(-1) + words[1];
-							} else {
-								words.push(tmp.slice(-1));
-							}
-						}
-
-						if (ctx.measureText(line + words[0]).width < maxWidth) {
-							line += words.shift() + " ";
-						} else {
-							lines.push(line);
-							line = "";
-						}
-						if (words.length === 0) {
-							lines.push(line);
-						}
-					}
-					return lines;
-				}
-
-
-
-
-				// scroll ani
-				// scrollAni('.feature_title', 'ani_slideInUp', 1.2, 2);
-				// scrollAni('.event_title strong', 'ani_slideInRight', 1.2, 2);
-			
-				// scroll ani up & down
-				// function scrollAni(target, aniClasses, elemPosition, elemSize) {
-				// 	if ($(target).length) {
-				// 		$(target).each(function() {
-				// 			var $window = $(window),
-				// 				$target = $(this);
-				// 			$window.on("scroll resize", function() {
-				// 				var windowScrollTop = $(this).scrollTop(),
-				// 					windowHeight = $(this).height();
-				// 				if (windowScrollTop >= $target.offset().top - windowHeight / elemPosition + $target.height() / elemSize && windowScrollTop <= $target.offset().top + $target.height()) {
-				// 					$target.addClass(aniClasses);
-				// 				}
-				// 			});
-				// 		});
-				// 	}
-				// }
-
-
-
-
-
-
-
-
-
-                // 무풍 로직 
-                // const product = ['무풍에어컨 갤러리', '무풍에어컨 클래식', '무풍 시스템에어컨', '벽걸이 에어컨', '창문형 에어컨']
-                // const productColor = ['화이트', '베이지', '그레이', '브라운', '기타(라벤더)']
-
-
-                // const pro = [{
-                //     productName: '무풍에어컨 갤러리',
-                //     productColor: ['화이트', '베이지', '그레이', '브라운', '기타(라벤더)'],
-                //     message: ['a', 'b', 'c', 'd'],
-                //     layout: ['a', 'b', 'c'],
-                //     backgroundColor: ['a', 'b', 'c']
-                // }]
-                //경우의 수 총 540개 
-
-
-                // 1. 사용자가 셀렉한걸 변수에 저장하고 
-                // 2. 클릭 시 dom src값에 업데이트 
-                // 2. 업데이트된 dom을 캔버스에 넣고 
-                // 3. 아이디값을 캔버스에 합성 후 
-                // 4. 다운로드
-
-                // `<img src="${productName}_${productColor}_${massage}_${['layout1, ..2, ..3'].Math.random()}_${['backgroundColor1, ..2, ..3'].Math.random()}.jpg">`
-
-
-                // 확인해야할 것 
-                // 1. 파일명 정리 위처럼 
-                // 2. 입력받는 닉네임? 아님 인스타 아이디? 
-
-
-			});
-
-		});
-	</script>
 	<!-- //script -->
 
 </body>
