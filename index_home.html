@@ -9,111 +9,18 @@
 
     <style>
 
-@charset "utf-8";
-
-@font-face {
-    font-family:'Samsung Sharp Sans';
-    font-style:normal;
-    font-weight:normal;
-    src:url('../_font/SamsungSharpSans-regular.TTF') format("truetype"),
-        url('../_font/SamsungSharpSans-regular.TTF') format("embedded-opentype");
-}
-@font-face {
-    font-family:'Samsung Sharp Sans';
-    font-style:normal;
-    font-weight:bold;
-    src:url('../_font/SamsungSharpSans-Bold.eot');
-    src:url('../_font/SamsungSharpSans-Bold.eot?#iefix') format("embedded-opentype"),
-        url('../_font/SamsungSharpSans-Bold.woff2') format("woff2"),
-        url('../_font/SamsungSharpSans-Bold.woff') format("woff"),
-        url('../_font/SamsungSharpSans-Bold.ttf') format("truetype");
-}
-
-
-@font-face {
-    font-family:'SamsungOneKorean';
-    font-style:normal;
-    font-weight:normal;
-    src:url('../_font/SamsungOneKorean-400.eot');
-    src:url('../_font/SamsungOneKorean-400.eot?#iefix') format("embedded-opentype"),
-        url('../_font/SamsungOneKorean-400.woff2') format("woff2"),
-        url('../_font/SamsungOneKorean-400.woff') format("woff"),
-        url('../_font/SamsungOneKorean-400.ttf') format("truetype");
-}
-@font-face {
-    font-family:'SamsungOneKorean';
-    font-style:normal;
-    font-weight:bold;
-    src:url('../_font/SamsungOneKorean-700.eot');
-    src:url('../_font/SamsungOneKorean-700.eot?#iefix') format("embedded-opentype"),
-        url('../_font/SamsungOneKorean-700.woff2') format("woff2"),
-        url('../_font/SamsungOneKorean-700.woff') format("woff"),
-        url('../_font/SamsungOneKorean-700.ttf') format("truetype");
-}
-
-/* @font-face {
-    font-family:'SamsungSharpSans';
-    font-style:normal;
-    font-weight:normal;
-    src:url('../_font/SamsungSharpSansBd.eot');
-    src:url('../_font/SamsungSharpSansBd.eot?#iefix') format("embedded-opentype"),
-		url('../_font/SamsungSharpSansBd.woff2') format("woff2"),
-		url('../_font/SamsungSharpSansBd.woff') format("woff");
-} */ /* IE에서 깨져 보임 */
-
-/* 삼성 'AS-IS'에서 적용된 폰트 */
-@font-face {
-    font-family:'samsungIcon';
-    font-style:normal;
-    font-weight:normal;
-    src:url('../_font/samsungIcon.woff') format("woff");
-}
-
-
-.blind {
-    position: absolute;
-    overflow: hidden;
-    border: 0;
-    width: 1px;
-    height: 1px;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-}
-
-
-html, body, div, h1, h2, h3, h4, h5, h6, span, object, iframe,
- p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i, a,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend, input, textarea, select,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary, button,
-time, mark, audio, video {
-            margin:0; padding:0; border:0; outline:0; font-family:/*'Samsung Sharp Sans',*/ 'SamsungOneKorean','dotum',sans-serif; /*font-size:16px; */letter-spacing:-0.02em;/*color:#707070;*/ vertical-align:baseline; background:transparent;
-            box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box;
-            word-break: keep-all; /* keep-all 정은정프로 요청사항 */
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; }
         img { width: 100%; }
         ol, ul { list-style: none; }
         .wishcard_item { width: 300px; }
 
-/* 여기까진 리셋 CSS... 올리는 cpg에 있는지 파악 후 있으면 안올려도 됨 */
-
-
-
 
         /* common */
 		body.scrollLock { overflow: hidden; }
 		
 		/* wishcard popup */
-		.wishcard_popup {position:fixed; left:0; top:0; right:0; bottom:0; z-index:99999; background:rgba(0,0,0,.8); overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; display: none; }
+		.wishcard_popup {position:fixed;left:0;top:0;right:0;bottom:0;z-index:99999;background:rgba(0,0,0,.8); overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; display: none; }
 		.wishcard_popup .wishcard_inner {position: absolute;top:5%;left:50%;transform:translate(-50%, 0);width: 90%; max-width:684px; background-color: #ffffff; }
 		.wishcard_popup .wishcard_inner::after { content: ''; position: absolute; bottom: -5%; left: 0; width: 100%; height: 5%; background-color: transparent; }
 		.wishcard_popup .wishcard_close { position: absolute; top: 0; right: 0; width: 75px; height: 75px; background: url('https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/ico-wishcard-popup-close.png') no-repeat center / cover; text-indent: -9999px; overflow: hidden; }
@@ -141,7 +48,7 @@ time, mark, audio, video {
 			/* wishcard popup */
 			.wishcard_popup .wishcard_inner { max-width:47.5000vw; }
 			.wishcard_popup .wishcard_close { width: 5.2083vw; height: 5.2083vw; text-indent: -694.3750vw; }
-			.wishcard_popup .wishcard_body { padding: 4.5139vw 2.0833vw 3.4722vw;}
+			.wishcard_popup .wishcard_body { padding: 4.5139vw 2.0833vw 3.4722vw; }
 			.wishcard_popup .wishcard_desc { margin-top: 0.6944vw; }
 			.wishcard_popup .wishcard_cont { margin-top: 2.0833vw; }
 			.wishcard_popup .wishcard_cont .input-border { height: 3.7500vw !important; line-height: 3.6111vw !important; border: 0.0694vw solid #ededed !important; font-size: 1.2500vw !important; padding: 0 1.3889vw !important; }
@@ -190,36 +97,24 @@ time, mark, audio, video {
             <h4 class="wishcard_title" data-fs-pc="24" data-fs-mo="26">아래 일러스트 이미지를 선택하시고,<br class="m_show"> 위시카드를 만들어보세요!</h4>
             <ul class="wishcard_list">
                 <li class="wishcard_item">
-                    <button class="e_btn e_btn70 focus" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1" data-color="red">
-                        <img src="/_images/we_test.png" data-wishcard="/_images/we_test.png" alt="예시 이미지">
-                    </button>
+                    <img src="/_images/test_img.png" data-wishcard="/_images/test_img.png" alt="예시 이미지">
+                    <button class="e_btn e_btn70 focus" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1" data-color="red">위시카드 만들기</button>
                 </li>
                 <li class="wishcard_item">
-                    <button class="e_btn e_btn70" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2" data-color="red">
-                        <img src="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-preview-02-v08.png" data-wishcard="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-download-02-v08.png" alt="예시 이미지">
-                    </button>
+                    <img src="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-preview-02-v08.png" data-wishcard="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-download-02-v08.png" alt="예시 이미지">
+                    <button class="e_btn e_btn70" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2" data-color="red">위시카드 만들기</button>
                 </li>
                 <li class="wishcard_item">
-                    <button class="e_btn e_btn70" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3" data-color="red">
-                        <img src="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-preview-03-v08.png" data-wishcard="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-download-03-v08.png" alt="예시 이미지">
-                    </button>
+                    <img src="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-preview-03-v08.png" data-wishcard="https://images.samsung.com/is/image/samsung/p5/sec/event/lets_tab_challenge/img-wishcard-download-03-v08.png" alt="예시 이미지">
+                    <button class="e_btn e_btn70" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3" data-color="red">위시카드 만들기</button>
                 </li>
-                <!-- <li class="wishcard_item">
-                    <button class="e_btn e_btn70 focus" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1" data-color="red">
-                        <img src="/_images/we_test.png" data-wishcard="/_images/we_test.png" alt="예시 이미지">
-                    </button>
-                </li>
-                <li class="wishcard_item">
-                    <button class="e_btn e_btn70 focus" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1" data-color="red">
-                        <img src="/_images/we_test.png" data-wishcard="/_images/we_test.png" alt="예시 이미지">
-                    </button>
-                </li> -->
             </ul>
         </div>
     </div>
 
 
-    <!-- 웨딩 팝업 -->
+    
+    <!-- s : 위시카드 팝업 -->
     <div class="wishcard_popup" role="dialog" aria-modal="true">
         <div class="wishcard_inner">
             <button class="wishcard_close">닫기</button>
@@ -229,8 +124,7 @@ time, mark, audio, video {
                     <h3 class="wishcard_title" data-fs-pc="24" data-fs-mo="34">STEP 1. 소망 입력하기</h3>
                     <p class="wishcard_desc" data-fs-pc="18" data-fs-mo="28">갤럭시 탭이 있다면 하고 싶은 소망을 입력해주세요.</p>
                     <div class="wishcard_cont">
-                        <!-- blind crossorigin="Anonymous" -->
-                        <img id="inputImage" class="" src="" alt="선택 이미지" crossorigin="Anonymous">
+                        <img id="inputImage" class="blind" src="" alt="선택 이미지" crossorigin="Anonymous">
                         <div class="input-box">
                             <label for="inputText" class="lb-line blind"></label>
                             <input type="text" id="inputText" class="input-border" placeholder="신랑이름">
@@ -244,11 +138,12 @@ time, mark, audio, video {
                             <label for="inputText3" class="lb-line blind"></label>
                             <input type="text" id="inputText3" class="input-border" placeholder="서울시 강남구 강남대로 123-12">
                         </div>
-                        <div class="input-box">
-                            <label for="inputText3_1" class="lb-line blind"></label>
-                            <input type="text" id="inputText3_1" class="input-border" placeholder="상세주소">
-                        </div>
                         <div class="input-box" id="inputText4">
+                            <!-- <span class="month_input">4월</span>&nbsp;
+                            <span class="day_input">27일</span>&nbsp;
+                            <span class="hour_input">17시</span>&nbsp;
+                            <span class="minute_input">30분</span> -->
+                               
                             <style>
                                 .date_wrap { display: flex; }
                                 .date_item { position: relative; border: 1px solid #a8a8a8; flex: 1 1 auto; cursor: pointer;} 
@@ -336,15 +231,13 @@ time, mark, audio, video {
                         </div>
                         <div class="input-box">
                             <label for="inputText5" class="lb-line blind"></label>
-                            <input type="text" id="inputText5" class="input-border" placeholder="초대문구">
+                            <input type="text" id="inputText5" class="input-border" placeholder="서울시 강남구 강남대로 123-12">
                         </div>
                     </div>
                     <div class="e_btn_wrap">
                         <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1_write">다음</button>
                         <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2_write">다음</button>
                         <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3_write">다음</button>
-                        <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish4_write">다음</button>
-                        <button class="e_btn e_btn60 wishcard_next" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish5_write">다음</button>
                     </div>
                 </div>
                 <!-- /step one -->
@@ -356,7 +249,6 @@ time, mark, audio, video {
                         <input id="canvasText" class="blind" type="text" tabindex="-1">
                         <input id="canvasText2" class="blind" type="text" tabindex="-1">
                         <input id="canvasText3" class="blind" type="text" tabindex="-1">
-                        <input id="canvasText3_1" class="blind" type="text" tabindex="-1">
                         <input id="canvasText4" class="blind" type="text" tabindex="-1">
                         <input id="canvasText5" class="blind" type="text" tabindex="-1">
                         <img id="canvasImage" src="" alt="다운로드 이미지">
@@ -367,19 +259,13 @@ time, mark, audio, video {
                         <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish1_download">이미지 저장하기</button>
                         <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish2_download">이미지 저장하기</button>
                         <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish3_download">이미지 저장하기</button>
-                        <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish4_download">이미지 저장하기</button>
-                        <button class="e_btn e_btn60 wishcard_save" data-omni-type="microsite" data-omni="sec:microsite:galaxy-tab-s7-navy:letstabchallenge:goto_event2_wish5_download">이미지 저장하기</button>
                     </div>
                 </div>
                 <!-- /step two -->
             </div>
         </div>
     </div>
-    <!-- //웨딩 팝업 -->
-
-    <!-- 집들이 팝업 -->
-    
-    <!-- //집들이 팝업 -->
+    <!-- e : 위시카드 팝업 -->
 
 
 
@@ -436,8 +322,6 @@ time, mark, audio, video {
 					var $this = $(this);
 					var thisIndex = $this.index();
 					var imgSrc = $this.find('img').attr('data-wishcard');
-                   
-                    console.log('아이템 이치문?', $this, $this.find('img'))
 
 					$this.find('.e_btn').on('click', function () {
                         const colorValue = this.dataset.color;
@@ -467,7 +351,6 @@ time, mark, audio, video {
 					let inputTextVal = $('#inputText').val();
 					let inputTextVal2 = $('#inputText2').val();
 					let inputTextVal3 = $('#inputText3').val();
-					let inputTextVal3_1 = $('#inputText3_1').val();
 					let inputTextVal4 = document.querySelector('#inputText3'); //날짜 객체 값 받아오기 
 					let inputTextVal5 = $('#inputText5').val();
 
@@ -481,14 +364,13 @@ time, mark, audio, video {
                     for(const obj in resultDate) {
                         if(resultDate[obj].length === 0) return alert('날짜를 모두 입력해주세요.');
                     }
-					if(inputTextVal && inputTextVal2 && inputTextVal3 && inputTextVal3_1 && inputTextVal5) {
+					if(inputTextVal && inputTextVal2 && inputTextVal3 && inputTextVal5) {
 						$('.wishcard_step.step-one').hide();
 						$('.wishcard_step.step-two').show();
 						$('.wishcard_save').focus();
 						$('#canvasText').val(inputTextVal);
 						$('#canvasText2').val(inputTextVal2);
 						$('#canvasText3').val(inputTextVal3);
-						$('#canvasText3_1').val(inputTextVal3_1);
 						$('#canvasText4').val(inputTextVal4.textContent);
 						$('#canvasText5').val(inputTextVal5);
 						let canvas = getCanvas(colorValue);
@@ -509,7 +391,6 @@ time, mark, audio, video {
 					var thisIndex = $(this).parent().find('.wishcard_save').index(this);
 					var canvasDownload = document.getElementById('canvasDownload');
 					canvasDownload.src = canvasDownload.toDataURL();
-
 					canvasDownload.toBlob(function (blob) {
 						saveAs(blob, "wishcard" + (thisIndex + 1) + ".png");
 					});
@@ -522,7 +403,6 @@ time, mark, audio, video {
 					$('#inputText').val('');
 					$('#inputText2').val('');
 					$('#inputText3').val('');
-					$('#inputText3_1').val('');
 					$('#inputText4').val('');
 					$('#inputText5').val('');
 					$('#inputImage').attr('src', '');
@@ -585,7 +465,7 @@ time, mark, audio, video {
 				});
 
 
-				function getCanvas(txtColor, type) {
+				function getCanvas(txtColor) {
 					var canvas = document.createElement("canvas");
 					canvas.id = "canvasDownload";
 					canvas.width = 1080;
@@ -602,15 +482,14 @@ time, mark, audio, video {
 					var textInput1 = document.querySelector('#canvasText').value;
 					var textInput2 = document.querySelector('#canvasText2').value;
 					var textInput3 = document.querySelector('#canvasText3').value;
-					var textInput3_1 = document.querySelector('#canvasText3_1').value;
 					var textInput4 = document.querySelector('#canvasText4').value;
 					var textInput5 = document.querySelector('#canvasText5').value;
 
 
 					ctx.fillStyle = txtColor;
 					ctx.textBaseline = "bottom";
-					var width1 = '400';
-					var fontSize1 = '50px';
+					var width1 = '300';
+					var fontSize1 = '60px';
 					var fontSize2 = '34px';
 
                     // 글자수에 따라 줄바꿈 되어야 할 경우 아래 함수 사용. lines 반복문은 그대로 유지해둠
@@ -618,81 +497,66 @@ time, mark, audio, video {
 					var lines1 = [textInput1]
 					var lines2 = [textInput2]
 					var lines3 = [textInput3]
-					var lines3_1 = [textInput3_1]
 					var lines4 = [textInput4]
-                    var lines5 = [textInput5];
-					// var lines5 = fragmentText(ctx, textInput5, width1);
-					
+					var lines5 = [textInput5]
+
+                    // console.log('lines', lines)
 
 					lines1.forEach(function(line, i) {
-                        ctx.textAlign ='right'
+                        ctx.textAlign ='center'
                         ctx.font = "bold 60px SamsungOneKorean";
-                        ctx.letterSpacing = "-2px";
+                        ctx.letterSpacing = "-9px";
 						if(i > 0) {
-							ctx.fillText(line, 500, (((i + 1) * 1.1) * parseInt(fontSize1, 0)) + 940);
+							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize1, 0)) + 1000);
 						} else {
-							ctx.fillText(line, 500, parseInt(fontSize1, 0) + 940);
+							ctx.fillText(line, 540, parseInt(fontSize1, 0) + 1000);
 						}
 					});
                     // 서울시 강남구 강남대로 123-12
-                    lines2.forEach(function(line, i) {
-                        ctx.textAlign = 'left'
-                        ctx.font = "bold 60px SamsungOneKorean";
-                        ctx.letterSpacing = "-2px";
-						if(i > 0) {
-							ctx.fillText(line, 565, (((i + 1) * 1.1) * parseInt(fontSize1, 0)) + 940);
-						} else {
-							ctx.fillText(line, 565, parseInt(fontSize1, 0) + 940);
-						}
-					});
+                    // lines2.forEach(function(line, i) {
+                    //     ctx.textAlign = 'left'
+                    //     ctx.font = "bold 60px SamsungOneKorean";
+                    //     ctx.letterSpacing = "-9px";
+					// 	if(i > 0) {
+					// 		ctx.fillText(line, 557, (((i + 1) * 1.1) * parseInt(fontSize1, 0)) + 1000);
+					// 	} else {
+					// 		ctx.fillText(line, 557, parseInt(fontSize1, 0) + 1000);
+					// 	}
+					// });
 
 
                     lines3.forEach(function(line, i) {
                         ctx.font = "bold 34px SamsungOneKorean";
-                        ctx.letterSpacing = "0px";
+                        ctx.letterSpacing = "-3px";
                         ctx.textAlign = "center";
 						if(i > 0) {
-							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1018);
+							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1100);
 						} else {
-							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1018);
-						}
-					});
-
-
-                    lines3_1.forEach(function(line, i) {
-                        ctx.font = "bold 34px SamsungOneKorean";
-                        ctx.letterSpacing = "0px";
-                        ctx.textAlign = "center";
-						if(i > 0) {
-							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1055);
-						} else {
-							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1055);
+							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1100);
 						}
 					});
 
                     
                     lines4.forEach(function(line, i) {
                         ctx.font = "bold 34px SamsungOneKorean";
-                        ctx.letterSpacing = "0px";
+                        ctx.letterSpacing = "-3px";
                         ctx.textAlign = "center";
 
 						if(i > 0) {
-							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1120);
+							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1152);
 						} else {
-							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1120);
+							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1152);
 						}
 					});
                     
                     lines5.forEach(function(line, i) {
                         ctx.font = "normal 34px SamsungOneKorean";
-                        ctx.letterSpacing = "0px";
+                        ctx.letterSpacing = "-3px";
                         ctx.textAlign = "center";
 						if(i > 0) {
-                            console.log('true i > 0', line)
-							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1190);
+							ctx.fillText(line, 540, (((i + 1) * 1.1) * parseInt(fontSize2, 0)) + 1235);
 						} else {
-                            console.log('false i < 0', line)
-							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1190);
+							ctx.fillText(line, 540, parseInt(fontSize2, 0) + 1235);
 						}
 					});
 
