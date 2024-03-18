@@ -88,7 +88,33 @@
 <body>
  
 
+    <input type="number" id="number_test">
 
+		<script>
+
+            // 특정 문자열 막기 
+			const tt = document.querySelector('#number_test')
+			console.log(tt.value)
+
+			tt.addEventListener('keydown', function(e) {
+				
+				const check = /[^0-9]/g;
+				if(e.keyCode === 69 || e.keyCode === 187 || e.keyCord === 189) {
+					e.preventDefault();
+					return; 
+				}
+
+				console.log(check)
+
+			})
+
+			const checkOnlyNumber = (string) => {
+			const check = /[^0-9]/g; // 숫자가 아닌 문자열을 선택하는 정규식
+			string = string.replace(check, ""); // 원래 문자열에서 숫자가 아닌 모든 문자열을 빈 문자로 변경
+			return string;
+			};
+
+		</script>
     
 
     <div class="event_part">
@@ -565,6 +591,8 @@
 					return canvas;
 				}
 
+
+                
 				function fragmentText(ctx, text, maxWidth) {
 					// var words = text.split(" "),
 					var words = [text];
